@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Damian Mattheeuw — Creative Developer & Photographer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader" aria-hidden="true">
+    <span class="loader-mark">DM</span>
+    <span class="loader-num"><span data-counter>0</span>%</span>
+  </div>
+
+  <!-- Always-on flow field canvas (outside smooth wrapper) -->
+  <canvas id="flow" aria-hidden="true"></canvas>
+  <div id="flow-fallback" aria-hidden="true"></div>
+
+  <!-- Custom cursor (outside smooth wrapper) -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Top bar (outside smooth wrapper — fixed) -->
+  <header class="topbar">
+    <a href="#hero" class="brand">
+      <span data-scramble>DAMIAN</span>
+      <span data-scramble>MATTHEEUW</span>
+    </a>
+    <a href="#hero" class="brand-mark" aria-label="Home">
+      <svg viewBox="0 0 32 32" width="36" height="36" fill="currentColor">
+        <path d="M5 26 L5 6 L11 6 L16 16 L21 6 L27 6 L27 26 L22 26 L22 14 L17 22 L15 22 L10 14 L10 26 Z"/>
+      </svg>
+    </a>
+    <div class="topbar-actions">
+      <a href="#work" class="cta-pill" data-magnetic>
+        <span class="cta-pill-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M6 7V6a6 6 0 0 1 12 0v1h2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7h2zm2 0h8V6a4 4 0 0 0-8 0v1z" fill="currentColor"/></svg>
+        </span>
+        <span data-scramble>WORK</span>
+      </a>
+      <button class="cta-square" aria-label="Menu" data-magnetic>
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ScrollSmoother wrapper -->
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <!-- ══ HERO ═════════════════════════════════════ -->
+      <section id="hero" aria-label="Hero">
+
+        <div class="stage" data-speed="0.95">
+          <!-- ASSET: hero-portrait → REPLACE src below -->
+          <div class="stage-portrait">
+            <img src="https://picsum.photos/seed/heroface/1400/1700"
+                 alt="" fetchpriority="high" draggable="false">
+            <div class="stage-veil" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <aside class="next-card" aria-label="Next project" data-magnetic>
+          <span class="next-card-label">NEXT PROJECT</span>
+          <div class="next-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 80 50" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path id="card-path" d="M5 30 Q15 10 30 18 T55 22 Q70 28 75 38"/>
+              <path id="card-tick" d="M30 18 L30 8" stroke-dasharray="2 3"/>
+            </svg>
+          </div>
+          <span class="next-card-name" data-scramble>SHOWREEL · Q3</span>
+          <div class="next-card-footer">
+            <span class="next-card-mark" aria-hidden="true">DM</span>
+            <span class="next-card-meta">FREELANCE<br>SINCE 2024</span>
+          </div>
+        </aside>
+
+        <aside class="status" aria-label="Status">
+          <span class="status-dot"></span>
+          <span data-scramble>AVAILABLE FOR WORK</span>
+        </aside>
+
+      </section>
+
+      <!-- ══ HEADLINE ═════════════════════════════════ -->
+      <section class="headline" id="headline">
+        <span class="section-eyebrow" data-reveal-eyebrow>— Portfolio / 2026</span>
+        <h1 class="headline-title">
+          <span class="line" data-split-line>WHERE CODE</span>
+          <span class="line italic" data-split-line>meets the wild.</span>
+        </h1>
+        <p class="headline-sub" data-split-words>A portfolio of work across web, motion, and image — by Damian Mattheeuw, based in Amsterdam.</p>
+      </section>
+
+      <!-- ══ WORK — pinned cinema cascade ════════════ -->
+      <section id="work" aria-label="Selected Work">
+        <div class="work-stage">
+
+          <header class="work-head">
+            <span class="section-eyebrow" data-reveal-eyebrow>— Selected Work / 01–04</span>
+            <p class="work-hint">Scroll to reveal</p>
+          </header>
+
+          <h2 class="work-title">COLLECTION</h2>
+
+          <a href="challenges/1-mouse-shader/index.html" class="work-pin pin-tl" data-cursor="crosshair">
+            <div class="pin-img"><img src="https://picsum.photos/seed/glitch42/900/1100" alt="Mouse Shader" loading="lazy"></div>
+            <div class="pin-meta">
+              <span class="pin-num">01</span>
+              <h3 class="pin-name" data-scramble>Mouse Shader</h3>
+              <span class="pin-cat">WebGL · Creative Coding</span>
+            </div>
+          </a>
+
+          <a href="challenges/4-pwa-challenge/index.html" class="work-pin pin-tr" data-cursor="crosshair">
+            <div class="pin-img"><img src="https://picsum.photos/seed/valley7/900/1100" alt="PWA Challenge" loading="lazy"></div>
+            <div class="pin-meta">
+              <span class="pin-num">02</span>
+              <h3 class="pin-name" data-scramble>PWA Challenge</h3>
+              <span class="pin-cat">Web App · JavaScript</span>
+            </div>
+          </a>
+
+          <a href="challenges/api-challenge/index.html" class="work-pin pin-bl" data-cursor="crosshair">
+            <div class="pin-img"><img src="https://picsum.photos/seed/river88/900/1100" alt="API Challenge" loading="lazy"></div>
+            <div class="pin-meta">
+              <span class="pin-num">03</span>
+              <h3 class="pin-name" data-scramble>API Challenge</h3>
+              <span class="pin-cat">Data · UI Design</span>
+            </div>
+          </a>
+
+          <a href="#" class="work-pin pin-br" data-cursor="crosshair">
+            <div class="pin-img"><img src="https://picsum.photos/seed/forest91/900/1100" alt="Photography" loading="lazy"></div>
+            <div class="pin-meta">
+              <span class="pin-num">04</span>
+              <h3 class="pin-name" data-scramble>Photography</h3>
+              <span class="pin-cat">Visual · Storytelling</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- ══ REEL ═════════════════════════════════════ -->
+      <section id="reel" aria-label="Reel">
+        <header class="section-head section-head--center">
+          <span class="section-eyebrow" data-reveal-eyebrow>— In Motion</span>
+          <h2 class="section-title">A GLIMPSE OF<br>THE <em>moving</em> WORK.</h2>
+        </header>
+
+        <div class="reel-frame">
+          <video id="reel-video"
+                 poster="https://picsum.photos/seed/reelposter/2400/1030"
+                 muted loop playsinline preload="metadata">
+            <source src="" type="video/mp4">
+          </video>
+          <button class="reel-play" id="reel-play" aria-label="Play reel" data-magnetic>
+            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          </button>
+          <div class="reel-marquee" aria-hidden="true">
+            <span>WATCH&nbsp;&nbsp;·&nbsp;&nbsp;PLAY&nbsp;&nbsp;·&nbsp;&nbsp;LOOP&nbsp;&nbsp;·&nbsp;&nbsp;WATCH&nbsp;&nbsp;·&nbsp;&nbsp;PLAY&nbsp;&nbsp;·&nbsp;&nbsp;LOOP&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+            <span>WATCH&nbsp;&nbsp;·&nbsp;&nbsp;PLAY&nbsp;&nbsp;·&nbsp;&nbsp;LOOP&nbsp;&nbsp;·&nbsp;&nbsp;WATCH&nbsp;&nbsp;·&nbsp;&nbsp;PLAY&nbsp;&nbsp;·&nbsp;&nbsp;LOOP&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ ABOUT ════════════════════════════════════ -->
+      <section id="about" aria-label="About Damian">
+        <div class="about-grid">
+
+          <div class="about-photo" data-speed="1.05">
+            <img class="js-parallax"
+                 src="https://picsum.photos/seed/portraitdm/1200/1600"
+                 alt="Damian Mattheeuw" loading="lazy">
+            <div class="about-veil" aria-hidden="true"></div>
+          </div>
+
+          <div class="about-text">
+            <span class="section-eyebrow" data-reveal-eyebrow>— The Person Behind the Screen</span>
+            <h2 class="section-title">BUILDING THINGS<br>THAT FEEL <em>alive</em>.</h2>
+            <div class="about-rule" aria-hidden="true"></div>
+            <p data-split-lines>I'm Damian — a developer and visual creator with a passion for the cinematic, the natural, and the adventurous.</p>
+            <p data-split-lines>I believe the best digital work feels alive. Whether I'm writing code or shooting in the wild, I'm chasing the same thing: something that makes people stop and feel something.</p>
+            <a href="about.html" class="cta-link" data-magnetic data-scramble>Full story →</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ STATS ════════════════════════════════════ -->
+      <section id="stats" aria-label="Stats">
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="stat-num count" data-target="4">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Projects shipped</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num count" data-target="3">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Years experimenting</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num stat-inf">∞</span>
+            <span class="stat-label">Ideas in progress</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ CONTACT ══════════════════════════════════ -->
+      <section id="contact" aria-label="Contact">
+        <div class="contact-inner">
+          <span class="section-eyebrow" data-reveal-eyebrow>— Get in Touch</span>
+          <h2 class="contact-heading">
+            <span class="line" data-split-line>GOT A VISION?</span>
+            <span class="line italic" data-split-line>let's build it.</span>
+          </h2>
+          <p class="contact-sub">Open for collaborations, commissions, and conversations.</p>
+          <a href="mailto:damianmattheeuw@gmail.com" class="contact-email" data-cursor="text" data-scramble>
+            damianmattheeuw@gmail.com
+            <span class="contact-arrow">→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ══ FOOTER ═══════════════════════════════════ -->
+      <footer id="footer">
+        <div class="footer-inner">
+          <span class="footer-logo">DM</span>
+          <p>&copy; 2026 Damian Mattheeuw — All rights reserved</p>
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="#work" data-scramble>Work</a>
+            <a href="#reel" data-scramble>Reel</a>
+            <a href="#about" data-scramble>About</a>
+            <a href="#contact" data-scramble>Contact</a>
+          </nav>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- ══ GSAP + Plugins (gsap-trial CDN) ════════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/ScrollSmoother.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/ScrollToPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/ScrambleTextPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/DrawSVGPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/MorphSVGPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/Flip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/MotionPathPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/Observer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/InertiaPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/Physics2DPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/CustomEase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/CustomBounce.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/CustomWiggle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/EasePack.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap-trial@3.12.5/dist/TextPlugin.min.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>

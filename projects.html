@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Damian Mattheeuw</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="grain" aria-hidden="true"></div>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">DM</a>
+    <div class="nav-links">
+      <a href="projects.html" class="nav-link">Work</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Page hero -->
+  <div class="page-hero">
+    <h1 class="page-hero-title">Selected<br><em style="font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;color:rgba(240,235,227,0.4)">Work</em></h1>
+  </div>
+
+  <!-- Projects grid -->
+  <div class="page-section">
+    <div class="section-eyebrow">All Projects</div>
+
+    <div class="page-grid">
+
+      <div class="page-card" data-cursor="crosshair">
+        <span class="project-tag">Web App</span>
+        <h3>Picoo Quiz Tool</h3>
+        <p>Interactive quiz platform with dynamic content delivery, real-time scoring, and a clean interface designed for classroom and event use.</p>
+        <a href="#" class="page-card-link">View project →</a>
+      </div>
+
+      <div class="page-card" data-cursor="crosshair">
+        <span class="project-tag">WebGL</span>
+        <h3>3D Endless Runner</h3>
+        <p>Browser-native endless runner built entirely in Three.js. Procedural obstacle generation, physics, and post-processing effects.</p>
+        <a href="#" class="page-card-link">View project →</a>
+      </div>
+
+      <div class="page-card" data-cursor="crosshair">
+        <span class="project-tag">Shader / GLSL</span>
+        <h3>Mouse Shader III</h3>
+        <p>Real-time GLSL fragment shader that tracks cursor velocity and displaces a WebGL texture with wave-like distortion.</p>
+        <a href="challenges/3-mouse-shader/index.html" class="page-card-link">View live →</a>
+      </div>
+
+      <div class="page-card" data-cursor="crosshair">
+        <span class="project-tag">Shader / GLSL</span>
+        <h3>Mouse Shader II</h3>
+        <p>Second iteration of the cursor-driven displacement shader — tighter ripple decay and improved UV mapping.</p>
+        <a href="challenges/2-mouse-shader/index.html" class="page-card-link">View live →</a>
+      </div>
+
+      <div class="page-card" data-cursor="crosshair">
+        <span class="project-tag">Shader / GLSL</span>
+        <h3>Mouse Shader I</h3>
+        <p>First exploration into interactive GLSL shaders — cursor position mapped to colour and displacement in the fragment stage.</p>
+        <a href="challenges/1-mouse-shader/index.html" class="page-card-link">View live →</a>
+      </div>
+
+      <div class="page-card" data-cursor="crosshair">
+        <span class="project-tag">PWA</span>
+        <h3>PWA Challenge</h3>
+        <p>Progressive Web App with service worker caching, offline support, and a mobile-first responsive layout.</p>
+        <a href="challenges/4-pwa-challenge/index.html" class="page-card-link">View live →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="page-section" style="padding-top:0;">
+    <a href="index.html" class="cta-link">← Back home</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+  <script>
+    (function() {
+      if (typeof gsap === 'undefined') return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Cursor
+      const dot = document.getElementById('cursor-dot');
+      const ring = document.getElementById('cursor-ring');
+      if (dot && ring) {
+        const xd = gsap.quickTo(dot,  'x', { duration: 0.08, ease: 'power2.out' });
+        const yd = gsap.quickTo(dot,  'y', { duration: 0.08, ease: 'power2.out' });
+        const xr = gsap.quickTo(ring, 'x', { duration: 0.38, ease: 'power2.out' });
+        const yr = gsap.quickTo(ring, 'y', { duration: 0.38, ease: 'power2.out' });
+        window.addEventListener('mousemove', e => { xd(e.clientX); yd(e.clientY); xr(e.clientX); yr(e.clientY); });
+        document.querySelectorAll('[data-cursor="crosshair"]').forEach(el => {
+          el.addEventListener('mouseenter', () => document.body.classList.add('cursor-crosshair'));
+          el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-crosshair'));
+        });
+      }
+
+      // Page hero title
+      gsap.from('.page-hero-title', {
+        y: 60, opacity: 0, duration: 1.2, ease: 'power4.out', delay: 0.2
+      });
+
+      // Cards stagger
+      gsap.from('.page-card', {
+        y: 40, opacity: 0, duration: 0.75, stagger: 0.1, ease: 'power3.out',
+        scrollTrigger: { trigger: '.page-grid', start: 'top 80%' }
+      });
+
+      gsap.from('.section-eyebrow', {
+        opacity: 0, x: -18, duration: 0.5, ease: 'power2.out',
+        scrollTrigger: { trigger: '.section-eyebrow', start: 'top 88%' }
+      });
+
+      // Magnetic nav
+      document.querySelectorAll('.nav-link, .nav-logo, .cta-link').forEach(el => {
+        el.addEventListener('mousemove', e => {
+          const r = el.getBoundingClientRect();
+          gsap.to(el, { x: (e.clientX - r.left - r.width/2)*0.32, y: (e.clientY - r.top - r.height/2)*0.32, duration: 0.28, ease: 'power2.out' });
+        });
+        el.addEventListener('mouseleave', () => gsap.to(el, { x:0, y:0, duration:0.55, ease:'elastic.out(1,0.45)' }));
+      });
+
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+    })();
+  </script>
+</body>
+</html>
